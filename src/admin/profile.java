@@ -5,6 +5,8 @@
  */
 package admin;
 
+import config.Session;
+
 /**
  *
  * @author Dell
@@ -16,8 +18,15 @@ public class profile extends javax.swing.JFrame {
      */
     public profile() {
         initComponents();
+        loadProfile();
     }
-
+    
+    private void loadProfile() {
+    Namelbl.setText(Session.getName());
+    Emaillbl.setText(Session.getEmail());
+    Typelbl.setText(Session.getType());
+    
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +47,10 @@ public class profile extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        Typelbl = new javax.swing.JLabel();
+        Namelbl = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Emaillbl = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -83,11 +94,21 @@ public class profile extends javax.swing.JFrame {
         jLabel4.setText("NAME:");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        jLabel5.setText("EMAIL:");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jLabel5.setText("TYPE:");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 140, -1));
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 150, 30));
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 150, 30));
+
+        Typelbl.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jPanel5.add(Typelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 150, 20));
+
+        Namelbl.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jPanel5.add(Namelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 150, 20));
+
+        jLabel7.setText("EMAIL:");
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        Emaillbl.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jPanel5.add(Emaillbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 150, 20));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 420, 230));
 
@@ -133,6 +154,7 @@ public class profile extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -171,6 +193,9 @@ public class profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Emaillbl;
+    private javax.swing.JLabel Namelbl;
+    private javax.swing.JLabel Typelbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -181,7 +206,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -192,4 +216,5 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     // End of variables declaration//GEN-END:variables
+
 }
