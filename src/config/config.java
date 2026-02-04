@@ -97,6 +97,10 @@ public String authenticate(String sql, Object... values) {
 
     public static class Session {
 
+        public static void setSession(int aInt, String string, String string0, String userType) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
         public Session() {
         }
     }

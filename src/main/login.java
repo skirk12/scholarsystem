@@ -121,66 +121,66 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
-        String email   = user.getText();
+        String email = user.getText();
         String password = pass.getText();
 
-if (email.equals("") || password.equals("")) {
-    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
-    return;
-}
+        if (email.equals("") || password.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+            return;
+        }
 
-String sql = "SELECT a_id, name, email, status, type FROM tbl_accounts WHERE email = ? AND password = ?";
+        String sql = "SELECT a_id, name, email, status, type FROM tbl_accounts WHERE email = ? AND password = ?";
 
-String status = null;
-String userType = null;
+        String status = null;
+        String userType = null;
 
-try (
-    java.sql.Connection conn = config.connectDB();
-    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-) {
+        try (
+            java.sql.Connection conn = config.connectDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+        ) {
 
-    pst.setString(1, email);
-    pst.setString(2, password);
+            pst.setString(1, email);
+            pst.setString(2, password);
 
-    java.sql.ResultSet rs = pst.executeQuery();
+            java.sql.ResultSet rs = pst.executeQuery();
 
-    if (!rs.next()) {
-        JOptionPane.showMessageDialog(null, "Invalid email or password!");
-        return;
-    }
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "Invalid email or password!");
+                return;
+            }
 
-    status = rs.getString("status").trim();
-    userType = rs.getString("type").trim();
-        Session sess = new Session();
-        sess.setSession(
-        rs.getInt("a_id"),
-        rs.getString("name"),
-        rs.getString("email"),
-        userType
-    );
+            status = rs.getString("status");
+            userType = rs.getString("type");
 
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
-    return;
-}
+            Session sess = new Session();
+            sess.setSession(
+                rs.getInt("a_id"),
+                rs.getString("name"),
+                rs.getString("email"),
+                userType
+            );
 
-if (!status.equalsIgnoreCase("Active")) {
-    JOptionPane.showMessageDialog(
-        null,
-        "Your account is inactive. Please contact the administrator."
-    );
-    return;
-}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+            return;
+        }
 
-JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+        if (!status.equalsIgnoreCase("Active")) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Your account is inactive. Please contact the administrator."
+            );
+            return;
+        }
 
-if (userType.equalsIgnoreCase("Admin")) {
-    new admindashboard().setVisible(true);
-} else if (userType.equalsIgnoreCase("User")) {
-    new userdashboard().setVisible(true);
-}
+        JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
 
-dispose();        // TODO add your handling code here:
+        if (userType.equalsIgnoreCase("Admin")) {
+            new admindashboard().setVisible(true);
+        } else if (userType.equalsIgnoreCase("User")) {
+            new userdashboard().setVisible(true);
+        } 
+        dispose();     
     }//GEN-LAST:event_jPanel4MouseClicked
 
     /**
