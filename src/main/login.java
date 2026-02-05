@@ -80,6 +80,12 @@ public class login extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Username:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userActionPerformed(evt);
+            }
+        });
         jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -183,6 +189,10 @@ public class login extends javax.swing.JFrame {
         } 
         dispose();     
     }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userActionPerformed
 
     /**
      * @param args the command line arguments

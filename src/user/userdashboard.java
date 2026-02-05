@@ -5,6 +5,10 @@
  */
 package user;
 
+import admin.user;
+import config.config;
+import javax.swing.JComponent;
+
 /**
  *
  * @author Dell
@@ -15,7 +19,24 @@ public class userdashboard extends javax.swing.JFrame {
      * Creates new form userdashboard
      */
     public userdashboard() {
+     
+        
+       
         initComponents();
+        displayUser();
+        
+        this.addWindowFocusListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowGainedFocus(java.awt.event.WindowEvent e) {
+            displayUser();
+        }
+    });
+    }
+    
+    void displayUser(){
+        config cn = new config();
+        String sql = "SELECT * FROM tbl_accounts";
+        cn.displayData(sql, tableuser);
     }
 
     /**
@@ -39,7 +60,7 @@ public class userdashboard extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableuser = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,7 +106,7 @@ public class userdashboard extends javax.swing.JFrame {
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 280, 90));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableuser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,7 +117,7 @@ public class userdashboard extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableuser);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 340));
 
@@ -163,7 +184,7 @@ public class userdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableuser;
     // End of variables declaration//GEN-END:variables
 }
